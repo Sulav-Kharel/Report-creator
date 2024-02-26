@@ -6,6 +6,8 @@ interface Props {
   endGreetings: string[];
 }
 const Report = ({ names, greetings, endGreetings }: Props) => {
+  const today = new Date();
+  const formattedDate = `${today.getMonth() + 1}/${today.getDate()}の報告です`;
   return (
     <div>
       <div>
@@ -20,7 +22,7 @@ const Report = ({ names, greetings, endGreetings }: Props) => {
         ))}
         <br />
         {/* Date */}
-        02/09の報告です
+        {formattedDate}
         <br />
         <br />
       </div>

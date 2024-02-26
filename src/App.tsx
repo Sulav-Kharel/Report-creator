@@ -3,8 +3,7 @@ import Button from "./components/Button";
 import Dropdown from "./components/Dropdown";
 import InputBox from "./components/InputBox";
 import Report from "./components/Report";
-import TagNames from "./components/TagNames";
-import NameInput from "./components/NameInput"; // Import the new component
+import NameInput from "./components/NameInput";
 
 function App() {
   const [selectedGreetings, setSelectedGreetings] = useState<string[]>([]);
@@ -12,13 +11,19 @@ function App() {
     []
   );
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
-  const greetings = ["Greeting1", "Greeting2", "Greeting3", "Greeting4"];
-  const names = ["@Alex", "@Ben", "@cary", "@Dominic"];
+  const greetings = ["お疲れ様です", "お疲れ様でした"];
+  const names = [
+    "@managers ",
+    "@channel ",
+    "@here ",
+    "@Satoshi Kosugi ",
+    "@熊澤拓哉 Kumazawa Takuya ",
+    "@清藤 智弘 Tomohiro Kiyofuji ",
+  ];
   const endGreetings = [
-    "endGreeting1",
-    "endGreeting2",
-    "endGreeting3",
-    "endGreeting4",
+    "よろしくお願い致します",
+    "お願い致します",
+    "宜しく頼みます",
   ];
 
   const handleGreetingSelection = (selected: string[]) => {
