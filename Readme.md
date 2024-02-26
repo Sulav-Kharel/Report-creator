@@ -18,6 +18,7 @@ This project is aimed at creating [your project name] using [technology stack].
 ### Code Formatter
 
 - For code formatting, I use Prettier. It can be installed as a plugin.
+- This is using TypeScript.
 
 ## Project Structure
 
