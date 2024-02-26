@@ -15,6 +15,10 @@ This project is aimed at creating [your project name] using [technology stack].
    OR
    `npm create vite@latest`
 
+   `cd project-name-here`
+
+   `npm l`
+
 ### Code Formatter
 
 - For code formatting, I use Prettier. It can be installed as a plugin.

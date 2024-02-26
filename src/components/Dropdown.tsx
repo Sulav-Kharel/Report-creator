@@ -1,11 +1,18 @@
 import React from "react";
 
 interface Props {
-  greetings: string[];
+  options: string[];
   heading: string;
+  onSelect?: (selected: string[]) => void; // Make onSelect optional and accept an array of strings
 }
 
-const Dropdown = ({ greetings, heading }: Props) => {
+const Dropdown = ({ options, heading, onSelect }: Props) => {
+  const handleOptionSelection = (selected: string) => {
+    if (onSelect) {
+      onSelect([selected]); // Wrap the selected option in an array
+    }
+  };
+
   return (
     <div className="dropdown">
       <button
@@ -17,9 +24,14 @@ const Dropdown = ({ greetings, heading }: Props) => {
         {heading}
       </button>
       <ul className="dropdown-menu">
-        {greetings.map((greeting, index) => (
+        {options.map((option, index) => (
           <li key={index}>
-            <span className="dropdown-item">{greeting}</span>
+            <span
+              className="dropdown-item"
+              onClick={() => handleOptionSelection(option)}
+            >
+              {option}
+            </span>
           </li>
         ))}
       </ul>
