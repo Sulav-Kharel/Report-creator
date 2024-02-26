@@ -11,11 +11,13 @@ This project is aimed at creating [your project name] using [technology stack].
 ### Setting up the Environment
 
 1. Use Vite to set up the environment:
-   `npm create vite@4.1.0 your-project-name`
+   `npm create vite@4.1.0`
+   OR
+   `npm create vite@latest`
 
 ### Code Formatter
 
-- For code formatting, we use Prettier. It can be installed as a plugin.
+- For code formatting, I use Prettier. It can be installed as a plugin.
 
 ## Project Structure
 
