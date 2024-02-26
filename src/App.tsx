@@ -7,9 +7,9 @@ function App() {
 
   return (
     <div>
-      <Button></Button>
+      <Button btnType="Success" heading="Submit"></Button>
       <Dropdown greetings={greetings} heading="Greeting"></Dropdown>
-      <Dropdown greetings={names} heading="Greeting"></Dropdown>
+      <Dropdown greetings={names} heading="Names"></Dropdown>
     </div>
   );
 }
