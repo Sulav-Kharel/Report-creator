@@ -18,7 +18,7 @@
 }
 
 .card-body {
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
     border: 1px solid black;
     border-radius: 16px;
@@ -32,4 +32,25 @@
     grid-column-gap: 16px;
     margin: 10% 0;
     padding: 8px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    
+    .card {
+        flex: 1;
+        flex-direction: column !important;
+    }
+
+    .card-body {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 16px;
+        background-color: white;
+        width: 100%;
+    }
+    
 }

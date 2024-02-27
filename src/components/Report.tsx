@@ -31,28 +31,33 @@ const Report: React.FC<Props> = ({
           <strong key={index}>{greeting}</strong>
         ))}
         <br />
+        <br />
         {/* Date */}
-        {new Date().toLocaleDateString()} の報告です <br />
+        {todayTasks && (
+          <div>
+            {new Date().toLocaleDateString()} の報告です <br />
+          </div>
+        )}
         <br />
       </div>
 
       {todayTasks && (
         <div>
-          <h4>本日の作業</h4>
+          <h5>[本日の作業]</h5>
           {/* Display today's tasks */}
           <p>{todayTasks}</p>
         </div>
       )}
       {tomorrowPlans && (
         <div>
-          <h4>明日の予定</h4>
+          <h5>[明日の予定]</h5>
           {/* Display tomorrow's plans */}
           <p>{tomorrowPlans}</p>
         </div>
       )}
       {consultation && (
         <div>
-          <h4>相談事項</h4>
+          <h5>[相談事項]</h5>
           {/* Display consultation */}
           <p>{consultation}</p>
         </div>
