@@ -1,13 +1,23 @@
+// Report.tsx
 import React from "react";
 
 interface Props {
   names: string[];
   greetings: string[];
   endGreetings: string[];
+  todayTasks: string;
+  tomorrowPlans: string;
+  consultation: string;
 }
-const Report = ({ names, greetings, endGreetings }: Props) => {
-  const today = new Date();
-  const formattedDate = `${today.getMonth() + 1}/${today.getDate()}の報告です`;
+
+const Report: React.FC<Props> = ({
+  names,
+  greetings,
+  endGreetings,
+  todayTasks,
+  tomorrowPlans,
+  consultation,
+}) => {
   return (
     <div>
       <div>
@@ -22,30 +32,32 @@ const Report = ({ names, greetings, endGreetings }: Props) => {
         ))}
         <br />
         {/* Date */}
-        {formattedDate}
-        <br />
+        {new Date().toLocaleDateString()} の報告です <br />
         <br />
       </div>
-      <div>
-        <h4>本日の作業</h4>
-        {/* Text inside the 本日の作業 text box */}
-        <ul>
-          <li>ホーム画面v2.０の追加</li>
-          <li>イベントリスト表示画面の作成 ⇨ 完了</li>
-          <li>COS商品スクレイピング ⇨ 進行中です</li>
-        </ul>
-      </div>
-      <div>
-        <h4>相談事項</h4>
-        {/* Text inside the 相談事項 text box */}
-        <p>
-          {/* when the @ is enterd it should show the names list  */}
-          <strong>@室田 大地 Murota Daichi</strong> さん
-          <br />
-          Selenium使ってスクレイピングしていますが、現在画ダウンロードにエラーが発生しています。
-          Automationですると画像ダウンロードの際403エラーが発生します。後1日頑張って見ます、明日中に連絡します
-        </p>
 
+      {todayTasks && (
+        <div>
+          <h4>本日の作業</h4>
+          {/* Display today's tasks */}
+          <p>{todayTasks}</p>
+        </div>
+      )}
+      {tomorrowPlans && (
+        <div>
+          <h4>明日の予定</h4>
+          {/* Display tomorrow's plans */}
+          <p>{tomorrowPlans}</p>
+        </div>
+      )}
+      {consultation && (
+        <div>
+          <h4>相談事項</h4>
+          {/* Display consultation */}
+          <p>{consultation}</p>
+        </div>
+      )}
+      <div>
         <p>
           <br />
           {endGreetings.map((endGreeting, index) => (

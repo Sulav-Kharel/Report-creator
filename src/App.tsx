@@ -1,3 +1,4 @@
+// App.tsx
 import React, { useState } from "react";
 import Button from "./components/Button";
 import Dropdown from "./components/Dropdown";
@@ -11,6 +12,10 @@ function App() {
     []
   );
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
+  const [todayTasks, setTodayTasks] = useState(""); // State for today's tasks
+  const [tomorrowPlans, setTomorrowPlans] = useState(""); // State for tomorrow's plans
+  const [consultation, setConsultation] = useState(""); // State for consultation
+
   const greetings = ["お疲れ様です", "お疲れ様でした"];
   const names = [
     "@managers ",
@@ -52,12 +57,24 @@ function App() {
               onSelect={handleGreetingSelection}
             />
             <div className="empty-div"></div>
-            {/* Replace the Dropdown component with NameInput */}
             <NameInput names={names} onNameSelect={handleNameSelect} />
           </div>
-          <InputBox heading="本日の作業" />
-          <InputBox heading="明日の予定" />
-          <InputBox heading="相談事項" />
+          {/* Pass value and onChange props to InputBox components */}
+          <InputBox
+            heading="本日の作業"
+            value={todayTasks}
+            onChange={(e) => setTodayTasks(e.target.value)}
+          />
+          <InputBox
+            heading="明日の予定"
+            value={tomorrowPlans}
+            onChange={(e) => setTomorrowPlans(e.target.value)}
+          />
+          <InputBox
+            heading="相談事項"
+            value={consultation}
+            onChange={(e) => setConsultation(e.target.value)}
+          />
           <div className="container-horizontal">
             <Dropdown
               options={endGreetings}
@@ -69,10 +86,14 @@ function App() {
           </div>
         </div>
         <div className="card-body">
+          {/* Pass input values as props to the Report component */}
           <Report
             names={selectedNames}
             greetings={selectedGreetings}
             endGreetings={selectedEndGreetings}
+            todayTasks={todayTasks}
+            tomorrowPlans={tomorrowPlans}
+            consultation={consultation}
           />
         </div>
       </div>
