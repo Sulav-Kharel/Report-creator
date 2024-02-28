@@ -47,6 +47,11 @@ const Report: React.FC<Props> = ({
       reportContent += `[相談事項]\n${consultation}\n\n`;
     }
 
+    //endGreetings
+    if (endGreetings) {
+      reportContent += `\n${endGreetings}\n\n`;
+    }
+
     navigator.clipboard
       .writeText(reportContent.trim())
       .then(() => alert("Report copied to clipboard"))
@@ -56,6 +61,10 @@ const Report: React.FC<Props> = ({
   return (
     <div>
       <div>
+        <div className="report-icon">
+          <i className="fa-solid fa-copy" onClick={copyReportToClipboard}></i>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </div>
         {/* Names */}
         {names.map((name, index) => (
           <strong key={index}>{name}</strong>
@@ -103,7 +112,6 @@ const Report: React.FC<Props> = ({
           <br />
         </p>
       </div>
-      <button onClick={copyReportToClipboard}>Copy Report</button>
     </div>
   );
 };
