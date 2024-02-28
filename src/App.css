@@ -4,13 +4,15 @@
 }
 
 .container {
-    width: 80%;
-    margin:20% auto;
+    width: 90%;
+    margin:5% auto;
 }
 
 .card {
     flex: 1;
     flex-direction: row !important;
+    gap: 10px;
+    --bs-card-border-color: none !important;
 }
 
 .card-title {
@@ -45,11 +47,6 @@
     }
 
     .card-body {
-        margin: 10px 0;
-        padding: 10px;
-        border: 1px solid black;
-        border-radius: 16px;
-        background-color: white;
         width: 100%;
     }
     

@@ -82,7 +82,8 @@ function App() {
               onSelect={handleEndGreetingSelection}
             />
             <div className="empty-div"></div>
-            <Button btnType="Success" heading="Submit" />
+            {/* Functionality of the button below is not yet determined */}
+            <Button btnType="Success" heading="Proceed" />
           </div>
         </div>
         <div className="card-body">

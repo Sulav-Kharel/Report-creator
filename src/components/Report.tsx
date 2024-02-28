@@ -1,4 +1,3 @@
-// Report.tsx
 import React from "react";
 
 interface Props {
@@ -18,6 +17,42 @@ const Report: React.FC<Props> = ({
   tomorrowPlans,
   consultation,
 }) => {
+  const copyReportToClipboard = () => {
+    let reportContent = "";
+    //Names
+    if (names) {
+      reportContent += `\n${names}\n`;
+    }
+    //Greetings
+    if (greetings) {
+      reportContent += `\n${greetings}\n\n`;
+    }
+    // Add today's date
+    if (todayTasks || tomorrowPlans || consultation) {
+      reportContent += `${new Date().toLocaleDateString()} の報告です\n\n`;
+    }
+
+    // Add today's tasks
+    if (todayTasks) {
+      reportContent += `[本日の作業]\n${todayTasks}\n\n`;
+    }
+
+    // Add tomorrow's plans
+    if (tomorrowPlans) {
+      reportContent += `[明日の予定]\n${tomorrowPlans}\n\n`;
+    }
+
+    // Add consultation
+    if (consultation) {
+      reportContent += `[相談事項]\n${consultation}\n\n`;
+    }
+
+    navigator.clipboard
+      .writeText(reportContent.trim())
+      .then(() => alert("Report copied to clipboard"))
+      .catch((error) => console.error("Failed to copy report: ", error));
+  };
+
   return (
     <div>
       <div>
@@ -44,21 +79,18 @@ const Report: React.FC<Props> = ({
       {todayTasks && (
         <div>
           <h5>[本日の作業]</h5>
-          {/* Display today's tasks */}
           <p>{todayTasks}</p>
         </div>
       )}
       {tomorrowPlans && (
         <div>
           <h5>[明日の予定]</h5>
-          {/* Display tomorrow's plans */}
           <p>{tomorrowPlans}</p>
         </div>
       )}
       {consultation && (
         <div>
           <h5>[相談事項]</h5>
-          {/* Display consultation */}
           <p>{consultation}</p>
         </div>
       )}
@@ -71,6 +103,7 @@ const Report: React.FC<Props> = ({
           <br />
         </p>
       </div>
+      <button onClick={copyReportToClipboard}>Copy Report</button>
     </div>
   );
 };
